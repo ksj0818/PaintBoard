@@ -89,6 +89,18 @@ function handleSaveClick() {
   link.click();
 }
 
+function touchMove(event) {
+  const x = event.targetTouches[0].pageX ;
+	const y = event.targetTouches[0].pageY ;
+
+  if (!painting) {
+    context.beginPath();    // 마우스를 클릭하지 않고 움직였을때는 path를 시작함
+    context.moveTo(x, y);   // path를 만들면 마우스의 x, y 좌표로 path를 옮기는 것
+  } else {
+    context.lineTo(x, y);   // lineTo는 path의 이전 위치에서 현재 위치까지 선이 만들어짐 (색을 아직 안들어감)
+    context.stroke();
+  }
+}
 
 if (canvas) {
   canvas.addEventListener("mousemove", onMouseMove);
@@ -98,8 +110,8 @@ if (canvas) {
   canvas.addEventListener("click", handleCanvasClick)
   canvas.addEventListener("contextmenu", handleCM)  // 우클릭 했을때 메뉴 안나오게하기 
   canvas.addEventListener("touchstart", startPainting)
+  canvas.addEventListener("touchmove", touchMove, false)
   canvas.addEventListener("touchend", stopPainting)
-  canvas.addEventListener("touchmove", onMouseMove)
 }
 
 Array.from(colors).forEach(color =>
