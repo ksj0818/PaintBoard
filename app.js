@@ -42,7 +42,6 @@ function onMouseMove(event) {
   }
 }
 
-
 // Array.from() 메서드는 object로부터 Array를 만듬
 // console.log(Array.from(colors));
 // console.log(colors);
@@ -98,6 +97,9 @@ if (canvas) {
   canvas.addEventListener("mouseleave", stopPainting);
   canvas.addEventListener("click", handleCanvasClick)
   canvas.addEventListener("contextmenu", handleCM)  // 우클릭 했을때 메뉴 안나오게하기 
+  canvas.addEventListener("touchstart", startPainting)
+  canvas.addEventListener("touchend", stopPainting)
+  canvas.addEventListener("touchmove", onMouseMove)
 }
 
 Array.from(colors).forEach(color =>
