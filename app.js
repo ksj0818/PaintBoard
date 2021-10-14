@@ -16,6 +16,7 @@ canvas.height = CANVAS_SIZE;
 
 context.fillStyle = "white";  // 초기 배경색 설정
 context.fillRect(0, 0, canvas.width, canvas.height) // 0, 0부터 캔버스 사이즈까지 컬러를 채움
+
 // 첫 번째 색을 검정색으로 설정
 context.strokeStyle = INITIAL_COLOR;  // strokeStyle은 그리는 선들이 갖는 컬러
 context.lineWidth = 2.5;          // 선의 너비
